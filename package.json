@@ -1,0 +1,35 @@
+{
+  "name": "html-scripts-to-array",
+  "version": "0.0.0",
+  "description": "Extracts HTML scripts source links to a JSON array.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/takuu/html-scripts-to-array.git"
+  },
+  "keywords": [
+    "scripts",
+    "html",
+    "array",
+    "json",
+    "js",
+    "javascript",
+    "source"
+  ],
+  "author": "Taku Uechi <taku30@gmail.com> (http://takuu.me/)",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/takuu/html-scripts-to-array/issues"
+  },
+  "devDependencies": {
+    "mocha": "~2.1.0",
+    "chai": "~1.10.0"
+  },
+  "dependencies": {
+    "jsdom": "~1.5.0",
+    "q": "~1.1.2"
+  }
+}

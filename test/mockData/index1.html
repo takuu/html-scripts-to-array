@@ -1,0 +1,126 @@
+<!doctype html >
+<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<base href="/">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css(app) styles/vendor.css -->
+	<!-- bower:css -->
+	<!-- endbower -->
+	<link rel="stylesheet" href="styles/vendor/bootstrap-select.css">
+	<link rel="stylesheet" href="styles/vendor/slider.css">
+	<!-- endbuild -->
+	<!-- build:css({.tmp,app}) styles/main.css -->
+	<!--<link rel="stylesheet" href="styles/main.css">-->
+	<!--<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />-->
+	<!--<link rel="stylesheet" href="styles/main_flatify.css">-->
+	<!-- This is our Purchased CSS -->
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="styles/vendor/bootstrap-3.2.0/css/bootstrap.min.css"> -->
+
+	<link rel="stylesheet" href="styles/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="styles/jquery.mCustomScrollbar.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<!-- End Purchased CSS -->
+	<!-- endbuild -->
+
+
+</head>
+<body ng-app="famcentricApp">
+
+<div ng-include="'navbar/navbar.html'"></div>
+
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div ui-view></div>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-53913017-1');
+	//ga('send', 'pageview');
+</script>
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- build:js(app) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/jquery-waypoints/waypoints.js"></script>
+<script src="bower_components/SHA-1/sha1.js"></script>
+<script src="bower_components/angulartics/src/angulartics.js"></script>
+<script src="bower_components/angulartics/src/angulartics-adobe.js"></script>
+<script src="bower_components/angulartics/src/angulartics-chartbeat.js"></script>
+<script src="bower_components/angulartics/src/angulartics-flurry.js"></script>
+<script src="bower_components/angulartics/src/angulartics-ga-cordova.js"></script>
+<script src="bower_components/angulartics/src/angulartics-ga.js"></script>
+<script src="bower_components/angulartics/src/angulartics-gtm.js"></script>
+<script src="bower_components/angulartics/src/angulartics-kissmetrics.js"></script>
+<script src="bower_components/angulartics/src/angulartics-mixpanel.js"></script>
+<script src="bower_components/angulartics/src/angulartics-piwik.js"></script>
+<script src="bower_components/angulartics/src/angulartics-scroll.js"></script>
+<script src="bower_components/angulartics/src/angulartics-segmentio.js"></script>
+<script src="bower_components/angulartics/src/angulartics-splunk.js"></script>
+<script src="bower_components/angulartics/src/angulartics-woopra.js"></script>
+<script src="bower_components/angulartics/src/angulartics-marketo.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="app.js"></script>
+<script src="login/index.js"></script>
+<script src="login/LoginCtrl.js"></script>
+<script src="school/index.js"></script>
+<script src="school/SchoolCtrl.js"></script>
+<script src="review/index.js"></script>
+<script src="review/ReviewCtrl.js"></script>
+<script src="signup/index.js"></script>
+<script src="signup/SignupCtrl.js"></script>
+<!--<script src="landing/index.js"></script>-->
+<!--<script src="landing/LandingCtrl.js"></script>-->
+<script src="search/index.js"></script>
+<script src="search/SearchCtrl.js"></script>
+<script src="search/search.service.js"></script>
+<script src="navbar/index.js"></script>
+<script src="navbar/NavBarCtrl.js"></script>
+<script src="settings/index.js"></script>
+<script src="settings/SettingCtrl.js"></script>
+<script src="admin/index.js"></script>
+<script src="admin/AdminCtrl.js"></script>
+
+<script src="common/services/auth.js"></script>
+<script src="common/services/session.js"></script>
+<script src="common/services/user.js"></script>
+<script src="common/directives/mongooseError.js"></script>
+<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<!-- endbuild -->
+</body>
+</html>
