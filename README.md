@@ -15,7 +15,3 @@ var convert = require("html-scripts-to-array").extract;
 
 convert('index.html', 'arrayOutput.json');
 ```
-
-- updated to use cheerio instead of jsdom because we want to have our script to be synchronous instead of asynchronous
-- added some tests
-- updated README.md to be more helpful
