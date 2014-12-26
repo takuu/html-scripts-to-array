@@ -23,7 +23,13 @@ function _getCallerFile() {
 
 module.exports = {
 
-	extractJS: function extract(inputFile, outputFile) {
+	extract: function extract(inputFile, outputFile) {
+		var dirname = path.dirname(_getCallerFile());
+
+		var data = this._readFile(dirname +'/' + inputFile);
+		return this._extractJSFiles(data);
+	},
+	extractToJSON: function extract(inputFile, outputFile) {
 		var dirname = path.dirname(_getCallerFile());
 
 		var data = this._readFile(dirname +'/' + inputFile);
@@ -56,16 +62,16 @@ module.exports = {
 			if (src) results.push(src);
 		});
 
-		console.log('writing ' + scripts.length + ' script sources to JSON file');
+		console.log('Found ' + scripts.length + ' script source files');
 		return results;
 	},
 
 	_writeToJSON: function _writeToJSON(array, file) {
 		try {
 			fs.writeFileSync(file, JSON.stringify(array), 'utf8');
-			console.log('successfully created file');
+			console.log('successfully written to file');
 		} catch (err) {
-			console.log('There was an error writing to JSON', err);
+			console.log('There was an error creating the file', err);
 		}
 	}
 
