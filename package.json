@@ -1,6 +1,6 @@
 {
   "name": "html-scripts-to-array",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extracts HTML scripts source links to a JSON array.",
   "main": "index.js",
   "scripts": {
