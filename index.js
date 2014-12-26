@@ -1,11 +1,32 @@
 var cheerio = require('cheerio');
 var fs = require('fs');
+var path = require('path');
 
+function _getCallerFile() {
+	try {
+		var err = new Error();
+		var callerfile;
+		var currentfile;
+
+		Error.prepareStackTrace = function (err, stack) { return stack; };
+
+		currentfile = err.stack.shift().getFileName();
+
+		while (err.stack.length) {
+			callerfile = err.stack.shift().getFileName();
+
+			if(currentfile !== callerfile) return callerfile;
+		}
+	} catch (err) {}
+	return undefined;
+}
 
 module.exports = {
 
 	extractJS: function extract(inputFile, outputFile) {
-		var data = this._readFile(__dirname +'/' + inputFile);
+		var dirname = path.dirname(_getCallerFile());
+
+		var data = this._readFile(dirname +'/' + inputFile);
 		var arrayJS = this._extractJSFiles(data);
 		this._writeToJSON(arrayJS, outputFile);
 	},
@@ -35,13 +56,14 @@ module.exports = {
 			if (src) results.push(src);
 		});
 
-		console.log('file has ', scripts.length, 'script src files');
+		console.log('writing ' + scripts.length + ' script sources to JSON file');
 		return results;
 	},
 
 	_writeToJSON: function _writeToJSON(array, file) {
 		try {
 			fs.writeFileSync(file, JSON.stringify(array), 'utf8');
+			console.log('successfully created file');
 		} catch (err) {
 			console.log('There was an error writing to JSON', err);
 		}

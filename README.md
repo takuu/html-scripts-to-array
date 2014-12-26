@@ -11,7 +11,7 @@ $ npm install html-scripts-to-array
 ##Example
 
 ```js
-var convert = require("html-scripts-to-array").extract;
+var convert = require("html-scripts-to-array");
 
-convert('index.html', 'arrayOutput.json');
+convert.extractJS('index.html', 'arrayOutput.json');
 ```
