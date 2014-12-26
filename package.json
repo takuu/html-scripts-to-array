@@ -1,6 +1,6 @@
 {
   "name": "html-scripts-to-array",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Extracts HTML scripts source links to a JSON array.",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,6 @@
     "chai": "~1.10.0"
   },
   "dependencies": {
-    "jsdom": "~1.5.0",
-    "q": "~1.1.2"
+    "cheerio": "~0.18.0"
   }
 }

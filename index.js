@@ -1,47 +1,50 @@
-var jsdom = require("jsdom");
+var cheerio = require('cheerio');
 var fs = require('fs');
-var Q = require('q');
 
 
-function _readFile(file) {
-	var data = fs.readFileSync(file, 'utf8');
+module.exports = {
 
-	console.log('_readFile: ', typeof data);
-	return data;
+	extractJS: function extract(inputFile, outputFile) {
+		var data = this._readFile(__dirname +'/' + inputFile);
+		var arrayJS = this._extractJSFiles(data);
+		this._writeToJSON(arrayJS, outputFile);
+	},
 
-}
+	// Below are internal functions but are exposed for testing
+	_readFile: function _readFile(file) {
+		var data;
 
-function _extractJSFiles(file) {
-	var results = [];
-	var defer = Q.defer();
-	console.log('_extractJSFiles: ', typeof file);
+		console.log('reading file ' + file + ' ..');
 
-	 //https://github.com/tmpvar/jsdom
-	//TODO: this jsdom runs async.  Probably need to find another that just runs synchronously
-	 jsdom.env(file, [],
-	 	function (errors, window) {
-	 		console.log("contents of script tags:");
-			var allScripts = window.document.querySelectorAll('script');
-			console.log('script count: ', allScripts.length);
-			for(var i=0; i<allScripts.length; i++) {
-				var item = allScripts[i].getAttribute('src');
-				results.push(item);
-			}
-			defer.resolve(results);
-	 	}
-	 );
-	console.log('this should show last');
-	return defer.promise;
-}
+		try {
+			data = fs.readFileSync(file, 'utf8');
+		} catch(err) {
+			console.log('there was an error reading that file', err);
+		}
 
-var htmlJSToArray = function(file) {
+		return data;
+	},
 
-	var absoluteDir = __dirname +'/' + file;
-	console.log('absoluteDir: ', absoluteDir);
-	var data = _readFile(absoluteDir);
-	_extractJSFiles(data);
+	_extractJSFiles: function _extractJSFiles(file) {
+		var results = [];
+
+		$ = cheerio.load(file);
+
+		var scripts = $('script').each(function() {
+			var src = $(this).attr('src');
+			if (src) results.push(src);
+		});
+
+		console.log('file has ', scripts.length, 'script src files');
+		return results;
+	},
+
+	_writeToJSON: function _writeToJSON(array, file) {
+		try {
+			fs.writeFileSync(file, JSON.stringify(array), 'utf8');
+		} catch (err) {
+			console.log('There was an error writing to JSON', err);
+		}
+	}
+
 };
-
-
-
-module.exports = htmlJSToArray;
